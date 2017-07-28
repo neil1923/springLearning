@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+		http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<bean id="datasource"
+		  class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+		<property name="driverClassName" value="com.microsoft.sqlserver.jdbc.SQLServerDriver" />
+		<!--注意一下&characterEncoding要修改为&amp;characterEncoding-->
+		<property name="url" value="jdbc:sqlserver://localhost:1433;DatabaseName=spring"/>
+		<property name="username" value="sa" />
+		<property name="password" value="root" />
+	</bean>
+
+	<bean id="studentDaoImp"
+		  class="org.laboratory.daoImpl.UserDaoImpl">
+		<property name="datasource" ref="datasource" />
+	</bean>
+
+	<bean id="userService" class="org.laboratory.serviceImpl.UserServiceImpl">
+	</bean>
+</beans>
