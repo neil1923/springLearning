@@ -22,7 +22,7 @@ public class UserDaoImpl implements UserDao{
 
     public User getUserById(Integer id) {
         List<User> users = null;
-        String sql = "SELECT * FROM userInfo where id=" + id;
+        String sql = "SELECT * FROM UserInfo where id=" + id;
         users = jdbcTemplateObject.query(sql, new UserMapper());
         if(users.size() != 0){
             return users.get(0);
@@ -32,7 +32,7 @@ public class UserDaoImpl implements UserDao{
 
     public List<User> getAllUsers() {
         List<User> users = null;
-        String sql = "SELECT * FROM userInfo";
+        String sql = "SELECT * FROM UserInfo";
         users = jdbcTemplateObject.query(sql, new UserMapper());
         return users;
     }

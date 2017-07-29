@@ -8,9 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Created by niu on 2017/7/28.
- */
+
 public class UserServiceImpl implements UserService{
 
     @Autowired
