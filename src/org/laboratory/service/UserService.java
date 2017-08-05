@@ -11,6 +11,7 @@ public interface UserService {
 
     public User getUserById(Integer id);
 
+
     public List<User> getUsers();
 
 }

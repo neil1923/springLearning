@@ -18,6 +18,9 @@ public class UserController {
 	@Autowired
 	private UserServiceImpl userService;
 
+
+
+
 	@RequestMapping(value = "/getUserById/{id}", method = RequestMethod.GET, produces = {
 			"application/json;charset=UTF-8" })
 	@ResponseBody

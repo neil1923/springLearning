@@ -7,9 +7,6 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import javax.sql.DataSource;
 import java.util.List;
 
-/**
- * Created by niu on 2017/7/28.
- */
 public class UserDaoImpl implements UserDao{
 
     private DataSource datasource;

@@ -13,11 +13,15 @@
 		<property name="password" value="root" />
 	</bean>
 
-	<bean id="studentDaoImp"
+	<bean id="UserDaoImp"
 		  class="org.laboratory.daoImpl.UserDaoImpl">
 		<property name="datasource" ref="datasource" />
 	</bean>
 
-	<bean id="userService" class="org.laboratory.serviceImpl.UserServiceImpl">
+	<bean id = "MessageDaoImpl" class="org.laboratory.daoImpl.MessageDaoImpl">
+		<property name="datasource" ref="datasource"/>
 	</bean>
+
+	<bean id="userService" class="org.laboratory.serviceImpl.UserServiceImpl"></bean>
+	<bean id="MessageService" class="org.laboratory.serviceImpl.MessageServiceImpl"></bean>
 </beans>
