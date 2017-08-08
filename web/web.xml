@@ -23,6 +23,7 @@
 	<servlet>
 		<servlet-name>springMVC</servlet-name>
 		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+		<!--dispatcherServlet对应的上下文配置-->
 		<init-param>
 			<param-name>contextConfigLocation</param-name>
 			<param-value>classpath*:/spring-mvc.xml</param-value>
@@ -31,6 +32,7 @@
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>springMVC</servlet-name>
+		<!--mvc-dispatcher拦截所有的请求-->
 		<url-pattern>/</url-pattern>
 	</servlet-mapping>
 

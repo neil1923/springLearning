@@ -18,20 +18,20 @@ import java.util.List;
 public class MessageController {
 
     @Autowired
-    private MessageServiceImpl messageSerivce;
+    private MessageServiceImpl messageService;
 
 
     @RequestMapping(value = "/getUserMessagesByToUid/{id}", method = RequestMethod.GET,
             produces = {"application/json;charset=UTF-8"})
     @ResponseBody
     public List<MyMessage> getUserMessagesByToUid(@PathVariable Integer id){
-        return messageSerivce.getUserMessagesByToUid(id);
+        return messageService.getUserMessagesByToUid(id);
     }
 
     @RequestMapping(value = "/getMessageById/{id}", method = RequestMethod.GET, produces = {
             "application/json;charset=UTF-8" })
     @ResponseBody
     public MyMessage getMessageById(@PathVariable Integer id) {
-        return messageSerivce.getMessageById(id);
+        return messageService.getMessageById(id);
     }
 }
