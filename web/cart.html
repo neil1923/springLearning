@@ -2,11 +2,11 @@
 <html xmlns:v-bind="http://www.w3.org/1999/xhtml" xmlns:v-on="http://www.w3.org/1999/xhtml"
       xmlns:v-if="http://www.w3.org/1999/xhtml">
 <head>
-    <title></title>
+    <title>Cart</title>
     <meta charset="utf-8">
     <meta content="IE=dege,chrom=1" http-equiv="X-UA-Compatible">
     <meta name="viewport" content="width=device-width, initial-scale=1.0 user-scalable=no">
-    <title>Cart</title>
+
     <link href="resources/css/base.css" rel="stylesheet">
     <link href="resources/css/checkout.css" rel="stylesheet">
     <link href="resources/css/modal.css" rel="stylesheet">
@@ -56,28 +56,32 @@
             <div class="item-list-wrap">
               <div class="cart-item">
                 <div class="cart-item-head">
-                  <ul>
-                    <li>商品信息</li>
-                    <li>商品金额</li>
-                    <li>商品数量</li>
-                    <li>总金额</li>
-                    <li>编辑</li>
+                    <ul>
+                      <li>商品信息</li>
+                      <li>商品金额</li>
+                      <li>商品数量</li>
+                      <li>总金额</li>
+                      <li>编辑</li>
                   </ul>
                 </div>
                 <ul class="cart-item-list">
                   <li v-for="(item,index) in productList">
                     <div class="cart-tab-1">
+                      <!-- 复选按钮（商品前的小圆圈）-->
                       <div class="cart-item-check">
-                        <a href="javascript:void 0" class="item-check-btn" v-bind:class="{'check':item.checked}" @click="selectedProduct(item)">
+                        <a href="javascript:void 0" class="item-check-btn"
+                           v-bind:class="{'check':item.checked}" @click="selectedProduct(item)">
                           <svg class="icon icon-ok"><use xlink:href="#icon-ok"></use></svg>
                         </a>
                       </div>
+                      <!--商品图片-->
                       <div class="cart-item-pic">
                         <img v-bind:src="item.productImage" alt="烟">
                       </div>
                       <div class="cart-item-title">
                         <div class="item-name">{{index+1}}-{{item.productName}}</div>
                       </div>
+                      <!--赠品-->
                       <div class="item-include">
                         <dl>
                           <dt>赠送:</dt>
@@ -85,6 +89,7 @@
                         </dl>
                       </div>
                     </div>
+                    <!--商品格式化后的单价（使用过滤器）-->
                     <div class="cart-tab-2">
                       <div class="item-price">{{item.productPrice | formatMoney}}</div>
                     </div>
@@ -92,17 +97,22 @@
                       <div class="item-quantity">
                         <div class="select-self select-self-open">
                           <div class="quantity">
+                            <!--数量减-->
                             <a href="javascript:void 0" v-on:click="changeQuantity(item,-1)">-</a>
+                            <!--v-model实现数据双向绑定-->
                             <input type="text" value="0" disabled v-model="item.productQuantity">
+                            <!--数量加-->
                             <a href="javascript:void 0" v-on:click="changeQuantity(item,1)">+</a>
                           </div>
                         </div>
                         <div class="item-stock">有货</div>
                       </div>
                     </div>
+                    <!--一类商品的金额-->
                     <div class="cart-tab-4">
                       <div class="item-price-total">{{item.productPrice * item.productQuantity | money("元")}}</div>
                     </div>
+                    <!--删除操作-->
                     <div class="cart-tab-5">
                       <div class="cart-item-operation">
                         <a href="javascript:void 0" class="item-edit-btn" @click="delConfirm(item)">
@@ -118,8 +128,10 @@
             <!-- footer -->
             <div class="cart-foot-wrap">
               <div class="cart-foot-l">
+                <!--全选-->
                 <div class="item-all-check">
                   <a href="javascript:void 0">
+                    <!--v-bind可以缩写成冒号：-->
                     <span class="item-check-btn" :class="{'check':checkAllFlag}" @click="checkAll()">
                       <svg class="icon icon-ok"><use xlink:href="#icon-ok"></use></svg>
                     </span>
@@ -132,6 +144,7 @@
                   <!--</a>-->
                 <!--</div>-->
               </div>
+              <!--总金额+结账-->
               <div class="cart-foot-r">
                 <div class="item-total">
                   总金额: <span class="total-price">{{totalMoney | money("元")}}</span>
@@ -144,7 +157,9 @@
           </div>
         </div>
 
-        <div class="md-modal modal-msg md-modal-transition" id="showModal" v-bind:class="{'md-show':delFlag}">
+        <!--删除操作弹框（取决于delFlag变量的值）-->
+        <div class="md-modal modal-msg md-modal-transition" id="showModal"
+             v-bind:class="{'md-show':delFlag}">
           <div class="md-modal-inner">
             <div class="md-top">
               <button class="md-close" @click="delFlag = false">关闭(X)</button>
@@ -160,9 +175,8 @@
             </div>
           </div>
         </div>
-
+        <!--overlay使得当弹框出来时背景变暗并不能操作（很重要很有意思）-->
         <div class="md-overlay" v-if="delFlag"></div>
-
       </div>
     </div>
 
